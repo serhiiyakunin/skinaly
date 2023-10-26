@@ -1,0 +1,40 @@
+.hero
+  background: #f1f1f1 url('../img/hero/hero-bg-cut-blur.jpg') no-repeat center top
+  background-size: cover
+  padding-top: 120px
+  padding-bottom: 240px
+  margin-top: 80px
+  &__title
+    margin-bottom: 40px
+    color: #ffffff
+    font-size: 30px
+  &__subtitle
+    display: block
+    margin-bottom: 67px
+    color: #ffffff
+    font-size: 30px
+    +bold
+@media (max-width: 768px)
+  .hero
+    background: #f1f1f1 url('../img/hero/hero-bg-cut-blur.jpg') no-repeat center right
+    background-size: 100%
+    background-position: 0 0
+    padding-top: 420px
+    margin-top: 60px
+    &__title
+      padding-top: 50px
+      color: $text-color
+    &__subtitle
+      color: $text-color
+@media (max-width: 480px)
+  .hero
+    background: #f1f1f1 url('../img/hero/hero-bg-cut-blur.jpg') no-repeat center
+    background-size: 100%
+    background-position: 0 0
+    padding-top: 340px
+    padding-bottom: 70px
+    &__title
+      padding-top: 0
+      color: $text-color
+    &__subtitle
+      color: $text-color
