@@ -1,5 +1,14 @@
- $(window).load(function () {
-    $('.before-after').twentytwenty({
+$(window).load(function () {
+  //  menu__nav
+   $('.menu-button').on('click', function () {
+     $('.menu').toggleClass('menu_active')
+   });
+  $('.menu__nav>a').on('click', function () {
+    $('.menu').toggleClass('menu_active');
+  });
+
+  // before-slider
+  $('.before-after').twentytwenty({
       before_label: 'Without skinali', // Set a custom before label
       after_label: 'With skinali' // Set a custom after label
     });
@@ -10,9 +19,7 @@
       prevArrow: $(".arrow-left"),
       nextArrow: $(".arrow-right")
     });
-   $('.menu-button').on('click', function () {
-     $('.menu').toggleClass('menu_active')
-   });
+  
   
     //        Select setting 
     $('.select').on('click', function () {
@@ -55,13 +62,38 @@
    $("input[type='tel']").mask("+38(099) 999-99-99");
    
   //  Show the map only when scrolled to it
-   var reviews = $('.reviews');
-   var reviewsTop = reviews.offset().top;
-   $(window).bind('scroll', function () {
-     var windowTop = $(this).scrollTop();
-     if (windowTop > reviewsTop) {
-       $('#map').html('<iframe src="https://www.google.com/maps/d/embed?mid=1t_d8Wrq7HK3g0-hAmlTfmwr5DEM&ehbc=2E312F" width="100%"height="480"></iframe>')
-       $(window).unbind('scroll')
-     }
-   })
-  });
+  var reviews = $('.reviews');
+  var reviewsTop = reviews.offset().top;
+  $(window).bind('scroll', function () {
+    var windowTop = $(this).scrollTop();
+    if (windowTop > reviewsTop) {
+      $('#map').html('<iframe src="https://www.google.com/maps/d/embed?mid=1t_d8Wrq7HK3g0-hAmlTfmwr5DEM&ehbc=2E312F" width="100%"height="480"></iframe>')
+      $(window).unbind('scroll')
+    }
+  })
+   
+    //reviews slider
+  var slider = $('.reviews-slider');
+  function windowSize(){
+    if ($(window).width() < 991) {
+      slider.slick({
+        draggable: false,
+        dots: true,
+        dotsClass: "reviews-slider__dots",
+        prevArrow: $(".arrow-left"),
+        nextArrow: $(".arrow-right")
+      })
+      //  sliderIsLive = true;
+      $('.reviews-slider').addClass('reviews-slider_slick')
+      
+  
+    } else {
+      $('.reviews-slider').slick('unslick');
+      // sliderIsLive = false;
+      $('.reviews-slider').removeClass('reviews-slider_slick');
+    }
+  }
+  windowSize();
+  $(window).on('resize', windowSize);
+
+});
